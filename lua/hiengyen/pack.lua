@@ -1,27 +1,5 @@
 local M = {}
 
-M.treesitter_install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site')
-M.treesitter_parsers = {
-  'bash',
-  'c',
-  'diff',
-  'go',
-  'hcl',
-  'html',
-  'lua',
-  'luadoc',
-  'markdown',
-  'markdown_inline',
-  'nix',
-  'python',
-  'query',
-  'rust',
-  'terraform',
-  'vim',
-  'vimdoc',
-  'yaml',
-}
-
 local commits = {
   ['LuaSnip'] = '642b0c595e11608b4c18219e93b88d7637af27bc',
   ['blink.cmp'] = '78336bc89ee5365633bcf754d93df01678b5c08f',
@@ -60,10 +38,6 @@ end
 
 local function spec(repo)
   local name = repo:match('[^/]+$')
-  if name == 'nvim-treesitter' then
-    return { src = gh(repo), version = 'main' }
-  end
-
   return { src = gh(repo), version = commits[name] }
 end
 
@@ -130,25 +104,6 @@ local function on_pack_changed(event)
     return
   end
 
-  if name ~= 'nvim-treesitter' then
-    return
-  end
-
-  local ok, err = pcall(function()
-    vim.cmd.packadd 'nvim-treesitter'
-    local treesitter = require 'nvim-treesitter'
-    treesitter.setup {
-      install_dir = M.treesitter_install_dir,
-    }
-    treesitter.install(M.treesitter_parsers, { summary = true }):wait(300000)
-    treesitter.update(M.treesitter_parsers, { summary = true }):wait(300000)
-  end)
-
-  if not ok then
-    vim.schedule(function()
-      vim.notify('nvim-treesitter parser install failed:\n' .. err, vim.log.levels.WARN)
-    end)
-  end
 end
 
 M.specs = {
@@ -169,7 +124,6 @@ M.specs = {
   spec 'L3MON4D3/LuaSnip',
   spec 'Mofiqul/dracula.nvim',
   spec 'echasnovski/mini.nvim',
-  spec 'nvim-treesitter/nvim-treesitter',
   spec 'lukas-reineke/indent-blankline.nvim',
   spec 'mfussenegger/nvim-lint',
   spec 'windwp/nvim-autopairs',

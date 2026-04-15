@@ -59,34 +59,6 @@ local function setup_mini()
   end
 end
 
-local function setup_treesitter()
-  local pack = require 'hiengyen.pack'
-  require('nvim-treesitter').setup {
-    install_dir = pack.treesitter_install_dir,
-  }
-
-  vim.api.nvim_create_autocmd('FileType', {
-    group = vim.api.nvim_create_augroup('hiengyen-treesitter', { clear = true }),
-    callback = function(args)
-      local ft = vim.bo[args.buf].filetype
-      local lang = vim.treesitter.language.get_lang(ft) or ft
-      local parser = vim.api.nvim_get_runtime_file(('parser/%s.*'):format(lang), true)
-
-      if #parser == 0 then
-        return
-      end
-
-      pcall(vim.treesitter.start, args.buf, lang)
-      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.wo.foldmethod = 'expr'
-
-      if lang ~= 'ruby' then
-        vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-      end
-    end,
-  })
-end
-
 local function setup_oscyank()
   vim.api.nvim_create_autocmd('TextYankPost', {
     group = vim.api.nvim_create_augroup('hiengyen-oscyank', { clear = true }),
@@ -132,7 +104,6 @@ function M.setup()
   vim.keymap.set('n', '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal', silent = true })
 
   setup_mini()
-  setup_treesitter()
   setup_oscyank()
   setup_codeium()
 end

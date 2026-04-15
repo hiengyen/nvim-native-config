@@ -10,7 +10,7 @@ Welcome to **hiengyen.nvim** - a customized Neovim configuration originally deri
 
 ### 🚀 Fully Supported Languages
 
-This configuration comes with an out-of-the-box system (LSP + Formatter + Treesitter) seamlessly running in the background for:
+This configuration comes with an out-of-the-box system (LSP + Formatter) seamlessly running in the background for:
 
 - **Python**: Supercharged with `pyright` (Static Type checking) and `ruff` (Lightning-fast Linter & Formatter).
 - **C / C++**: `clangd` & `clang-format`.
@@ -86,7 +86,7 @@ Chào mừng bạn đến với **hiengyen.nvim** - một bộ cấu hình Neovi
 
 ### 🚀 Các Ngôn Ngữ Được Hỗ Trợ Toàn Diện
 
-Bộ cấu hình nhúng sẵn hệ sinh thái phân tích mã nguồn (LSP + Formatter + Treesitter) hoạt động tự động dưới nền:
+Bộ cấu hình nhúng sẵn hệ sinh thái phân tích mã nguồn (LSP + Formatter) hoạt động tự động dưới nền:
 
 - **Python**: Mạnh mẽ với `pyright` (Phân tích tĩnh/Gợi ý) và `ruff` (Linter & Formatter siêu tốc).
 - **C / C++**: `clangd` & `clang-format`.
