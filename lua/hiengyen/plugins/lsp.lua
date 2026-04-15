@@ -34,9 +34,8 @@ local function setup_blink()
       documentation = { auto_show = false, auto_show_delay_ms = 500 },
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets' },
+      default = { 'lsp', 'path' },
     },
-    snippets = { preset = 'luasnip' },
     fuzzy = { implementation = 'lua' },
     signature = { enabled = true },
   }

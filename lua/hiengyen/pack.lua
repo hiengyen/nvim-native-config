@@ -1,7 +1,6 @@
 local M = {}
 
 local commits = {
-  ['LuaSnip'] = '642b0c595e11608b4c18219e93b88d7637af27bc',
   ['blink.cmp'] = '78336bc89ee5365633bcf754d93df01678b5c08f',
   ['codeium.vim'] = '3c0a4f8a7be75113a6e19be13b7cc37210d6e26a',
   ['conform.nvim'] = '086a40dc7ed8242c03be9f47fbcee68699cc2395',
@@ -97,13 +96,6 @@ local function on_pack_changed(event)
     return
   end
 
-  if name == 'LuaSnip' then
-    if vim.fn.has 'win32' == 0 and vim.fn.executable 'make' == 1 then
-      run({ 'make', 'install_jsregexp' }, event.data.path)
-    end
-    return
-  end
-
 end
 
 M.specs = {
@@ -121,7 +113,6 @@ M.specs = {
   spec 'j-hui/fidget.nvim',
   spec 'stevearc/conform.nvim',
   spec 'saghen/blink.cmp',
-  spec 'L3MON4D3/LuaSnip',
   spec 'Mofiqul/dracula.nvim',
   spec 'echasnovski/mini.nvim',
   spec 'lukas-reineke/indent-blankline.nvim',
