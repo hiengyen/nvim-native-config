@@ -22,14 +22,6 @@ local servers = {
   yamlls = {},
 }
 
-local function setup_lazydev()
-  require('lazydev').setup {
-    library = {
-      { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-    },
-  }
-end
-
 local function setup_blink()
   require('blink.cmp').setup {
     keymap = {
@@ -42,10 +34,7 @@ local function setup_blink()
       documentation = { auto_show = false, auto_show_delay_ms = 500 },
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'lazydev' },
-      providers = {
-        lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-      },
+      default = { 'lsp', 'path', 'snippets' },
     },
     snippets = { preset = 'luasnip' },
     fuzzy = { implementation = 'lua' },
@@ -271,7 +260,6 @@ local function setup_lsp()
 end
 
 function M.setup()
-  setup_lazydev()
   require('mason').setup {}
   require('fidget').setup {}
   setup_blink()

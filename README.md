@@ -73,13 +73,7 @@ _(Note: The **`<Leader>`** key is customized to the **`Space`** bar)_
 - By default, **saving a file (`<Ctrl> + s`)** automatically formats the code to specific language standards.
 - **`<Leader> + f`**: Trigger manual forced formatting at any time.
 
-#### 7. Git Integration (Gitsigns)
-
-- **`]c` / `[c`**: Jump quickly between next/previous Git changed blocks (hunks).
-- **`<Leader> + hp`** _(Hunk Preview)_: Check out what the code previously looked like inline.
-- **`<Leader> + tb`** _(Toggle Blame)_: Toggle faded text identifying the commit author & timestamp on the current line.
-
-#### 8. Super Speed Surrounding (Mini.surround)
+#### 7. Super Speed Surrounding (Mini.surround)
 
 - **Wrap Word (saiw + <char>)**: Hover over a word and rapidly type **`s` -> `a` -> `i` -> `w` -> `"`** (Surround Add Inner Word Quote).
 - **Delete Wrapper (sd + <char>)**: Hover over a wrapped word and type **`s` -> `d` -> `"`** (Surround Delete Quote). The quotes disappear instantly.
@@ -155,13 +149,7 @@ _(Lưu ý: Phím **`<Leader>`** mặc định được cấu hình là phím **`
 - Mặc định **khi bấm Lưu file (`<Ctrl> + s`)**, code sẽ tự động căn lề hoàn hảo dựa trên tiêu chuẩn cốt lõi của từng ngôn ngữ.
 - **`<Leader> + f`**: Ép định dạng thủ công bất kỳ lúc nào.
 
-#### 7. Dấu vết Git (Gitsigns)
-
-- **`]c` / `[c`**: Nhảy nhanh đến dòng code bị thay đổi tiếp/trước.
-- **`<Leader> + hp`** _(Hunk Preview)_: Xem code quá khứ ở dòng hiện tại trước khi bị sửa đổi trông thế nào.
-- **`<Leader> + tb`** _(Toggle Blame)_: Hiển thị mờ mờ ở cuối dòng tên kèm thời điểm thao tác git của người viết (blame).
-
-#### 8. Bao bọc chữ nhanh (Mini.surround)
+#### 7. Bao bọc chữ nhanh (Mini.surround)
 
 - **Cách Bọc Chữ (saiw + <dấu>)**: Trỏ vào chữ. Gõ nhanh **`s` -> `a` -> `i` -> `w` -> `"`**.
 - **Cách Gỡ Bỏ (sd + <dấu>)**: Trỏ vào chữ bị bọc. Gõ nhanh **`s` -> `d` -> `"`**. Lập tức cặp ngoặc sẽ biến mất.
