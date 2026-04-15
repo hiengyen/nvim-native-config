@@ -121,15 +121,31 @@ local function setup_mini()
 end
 
 local function setup_treesitter()
-  require('nvim-treesitter.configs').setup {
-    ensure_installed = require('hiengyen.pack').treesitter_parsers,
-    auto_install = true,
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = { 'ruby' },
-    },
-    indent = { enable = true, disable = { 'ruby' } },
+  local pack = require 'hiengyen.pack'
+  require('nvim-treesitter').setup {
+    install_dir = pack.treesitter_install_dir,
   }
+
+  vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('hiengyen-treesitter', { clear = true }),
+    callback = function(args)
+      local ft = vim.bo[args.buf].filetype
+      local lang = vim.treesitter.language.get_lang(ft) or ft
+      local parser = vim.api.nvim_get_runtime_file(('parser/%s.*'):format(lang), true)
+
+      if #parser == 0 then
+        return
+      end
+
+      pcall(vim.treesitter.start, args.buf, lang)
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.wo.foldmethod = 'expr'
+
+      if lang ~= 'ruby' then
+        vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
+    end,
+  })
 end
 
 local function setup_oscyank()

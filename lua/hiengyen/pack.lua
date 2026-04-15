@@ -1,5 +1,6 @@
 local M = {}
 
+M.treesitter_install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site')
 M.treesitter_parsers = {
   'bash',
   'c',
@@ -63,7 +64,7 @@ end
 local function spec(repo)
   local name = repo:match('[^/]+$')
   if name == 'nvim-treesitter' then
-    return { src = gh(repo), version = 'master' }
+    return { src = gh(repo), version = 'main' }
   end
 
   return { src = gh(repo), version = commits[name] }
@@ -138,7 +139,12 @@ local function on_pack_changed(event)
 
   local ok, err = pcall(function()
     vim.cmd.packadd 'nvim-treesitter'
-    vim.cmd('TSUpdateSync ' .. table.concat(M.treesitter_parsers, ' '))
+    local treesitter = require 'nvim-treesitter'
+    treesitter.setup {
+      install_dir = M.treesitter_install_dir,
+    }
+    treesitter.install(M.treesitter_parsers, { summary = true }):wait(300000)
+    treesitter.update(M.treesitter_parsers, { summary = true }):wait(300000)
   end)
 
   if not ok then

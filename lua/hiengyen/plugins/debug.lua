@@ -1,6 +1,14 @@
 local M = {}
 
 function M.setup()
+  local has_nio = pcall(require, 'nio')
+  if not has_nio then
+    vim.schedule(function()
+      vim.notify('Skipping nvim-dap-ui setup: `nio` is not available on runtimepath', vim.log.levels.WARN)
+    end)
+    return
+  end
+
   local dap = require 'dap'
   local dapui = require 'dapui'
 
