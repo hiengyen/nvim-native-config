@@ -26,6 +26,7 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
 
+-- Keymaps
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
 vim.keymap.set('n', '<C-LeftMouse>', '<LeftMouse>gx', { desc = 'Open link under cursor' })
@@ -43,6 +44,7 @@ vim.keymap.set('n', 'ps', '<cmd>PackStatus<cr>', { desc = 'Open native package s
 vim.keymap.set('n', 'pu', '<cmd>PackUpdate<cr>', { desc = 'Update native packages' })
 vim.keymap.set('n', 'pc', '<cmd>PackClean<cr>', { desc = 'Clean inactive native packages' })
 vim.keymap.set('n', '<leader>m', '<cmd>Mason<cr>', { desc = 'Open Mason UI' })
+vim.keymap.set('n', '<leader>h', '<cmd>checkhealth<cr>', { desc = 'Open Healthcheck' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',

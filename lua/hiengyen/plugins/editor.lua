@@ -41,9 +41,9 @@ local function setup_which_key()
   }
 
   wk.add {
-    { '<leader>s', group = '[S]earch' },
-    { '<leader>t', group = '[T]oggle' },
-    { '<leader>w', group = '[W]indow' },
+    { '<leader>s', group = 'Search' },
+    { '<leader>t', group = 'Toggle' },
+    { '<leader>w', group = 'Window' },
   }
 end
 
