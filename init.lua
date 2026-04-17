@@ -10,6 +10,7 @@ require('hiengyen.plugins.editor').setup()
 require('hiengyen.plugins.search').setup()
 require('hiengyen.plugins.lsp').setup()
 require('hiengyen.plugins.debug').setup()
+require('hiengyen.plugins.treesitter').setup()
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {

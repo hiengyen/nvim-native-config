@@ -29,6 +29,7 @@ local commits = {
   ['telescope.nvim'] = '471eebb1037899fd942cc0f52c012f8773505da1',
   ['vim-oscyank'] = 'd67d76b2f19b868b70a1cf33a779d71dc092cb30',
   ['which-key.nvim'] = '3aab2147e74890957785941f0c1ad87d0a44c15a',
+  ['nvim-treesitter'] = '4916d6592ede8c07973490d9322f187e07dfefac',
 }
 
 local function gh(repo)
@@ -127,6 +128,7 @@ M.specs = {
   spec 'jay-babu/mason-nvim-dap.nvim',
   spec 'leoluz/nvim-dap-go',
   spec 'nvim-neotest/nvim-nio',
+  spec 'nvim-treesitter/nvim-treesitter',
 }
 
 function M.setup()
