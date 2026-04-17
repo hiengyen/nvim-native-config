@@ -1,11 +1,30 @@
+-- Init
 if vim.loader then
   vim.loader.enable()
 end
 
+-- Plugins
+require('hiengyen.pack').setup()
+require('hiengyen.plugins.appearance').setup()
+require('hiengyen.plugins.editor').setup()
+require('hiengyen.plugins.search').setup()
+require('hiengyen.plugins.lsp').setup()
+require('hiengyen.plugins.debug').setup()
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('hiengyen-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
+
+--
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
-
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.o.number = true
 vim.o.mouse = 'a'
 vim.o.showmode = false
@@ -20,11 +39,16 @@ vim.o.timeoutlen = 1000
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.o.inccommand = 'split'
 vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
+vim.o.modeline = true
+vim.o.modelines = 5
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
 
 -- Keymaps
 local keymap = vim.keymap.set
@@ -53,25 +77,3 @@ keymap('n', '<leader>tm', ':tabmove<CR>', { desc = 'Move current tab' })
 keymap('n', '<leader>tl', ':tabnext<CR>', { desc = 'Move to next tab' })
 keymap('n', '<leader>th', ':tabprevious<CR>', { desc = 'Move to previous tab' })
 keymap('n', '<leader>te', ':tabedit<CR>', { desc = 'Open file in new tab' })
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('hiengyen-highlight-yank', { clear = true }),
-  callback = function()
-    vim.hl.on_yank()
-  end,
-})
-
-require('hiengyen.pack').setup()
-require('hiengyen.plugins.appearance').setup()
-require('hiengyen.plugins.editor').setup()
-require('hiengyen.plugins.search').setup()
-require('hiengyen.plugins.lsp').setup()
-require('hiengyen.plugins.debug').setup()
-
-vim.o.modeline = true
-vim.o.modelines = 5
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
-vim.o.expandtab = true
