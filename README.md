@@ -8,6 +8,32 @@
 
 Welcome to **hiengyen.nvim** - a customized Neovim configuration originally derived from Kickstart.nvim, now refactored to use Neovim `v0.12.1` native packages via `vim.pack`, and themed with Dracula. This setup transforms Neovim into a modern IDE, specially tuned to offer a seamless, intelligent, and rich coding experience.
 
+### 🏗️ Config Architecture
+
+This configuration follows a **Native-first** approach, utilizing the built-in `vim.pack` API (available in Neovim v0.12+) to manage plugins without external managers.
+
+#### Directory Structure
+```text
+.
+├── init.lua               # Entry point: options, keymaps, and module loader
+├── nvim-pack-lock.json    # Auto-generated lockfile for plugin versions
+├── lua/
+│   ├── hiengyen/
+│   │   ├── pack.lua       # Centralized plugin definitions and vim.pack logic
+│   │   ├── health.lua     # Custom health check definitions
+│   │   └── plugins/       # Modular plugin configurations
+│   │       ├── appearance.lua
+│   │       ├── lsp.lua
+│   │       ├── editor.lua
+│   │       └── search.lua
+│   └── custom/            # Reserved for user-specific overrides
+```
+
+#### Key Pillars
+- **Native Package Management**: Plugins are installed as git submodules/directories in `pack/bundle/start/`, managed via the `vim.pack` API.
+- **Strict Versioning**: A lockfile (`nvim-pack-lock.json`) ensures consistent environments across machines.
+- **Modularization**: Configurations are split by concerns (LSP, UI, Search) for maintainability.
+
 ### 🚀 Fully Supported Languages
 
 This configuration comes with an out-of-the-box system (LSP + Formatter) seamlessly running in the background for:
@@ -32,8 +58,9 @@ _(Note: The **`<Leader>`** key is customized to the **`Space`** bar)_
 - **`<Ctrl> + Click`**: Open a URL/link under the cursor directly in the web browser.
   - _Tip for Command-line/Message Area links_: Hold **`<Shift>`** while clicking to bypass Neovim and let your terminal emulator open the link.
 - **`<Esc><Esc>`**: Exit built-in Terminal mode easily.
-- **`<Leader> + l`**: Open native package status (`vim.pack`).
-- **`<Leader> + u`**: Update native packages (`vim.pack.update()`).
+- **`ps`**: Open native package status (**P**ack **S**tatus).
+- **`pu`**: Update native packages (**P**ack **U**pdate).
+- **`pc`**: Clean inactive native packages (**P**ack **C**lean).
 - **`<Leader> + m`**: Open Mason Package Manager UI.
 - **SSH/Docker Clipboard**: Seamlessly copies text to your Host OS clipboard (OSC52) whenever you `y` (yank), bypassing complex X11/xclip issues.
 
@@ -84,6 +111,32 @@ _(Note: The **`<Leader>`** key is customized to the **`Space`** bar)_
 
 Chào mừng bạn đến với **hiengyen.nvim** - một bộ cấu hình Neovim được tinh chỉnh mạnh mẽ, xuất phát từ Kickstart.nvim nhưng đã được refactor sang cơ chế package native của Neovim `v0.12.1` thông qua `vim.pack`, khoác lên mình giao diện Dracula. Cấu hình này được tùy biến để mang lại trải nghiệm code mượt mà, thông minh và đầy đủ tính năng như một IDE hiện đại.
 
+### 🏗️ Kiến Trúc Config
+
+Bộ cấu hình này tuân thủ triết lý **Native-first**, sử dụng trực tiếp API `vim.pack` (có mặt từ Neovim v0.12+) để quản lý các gói mở rộng mà không cần đến các plugin manager bên thứ ba.
+
+#### Cấu Trúc Thư Mục
+```text
+.
+├── init.lua               # Điểm khởi đầu: thiết lập tùy chọn, phím tắt và nạp module
+├── nvim-pack-lock.json    # File khóa phiên bản plugin (tự động tạo)
+├── lua/
+│   ├── hiengyen/
+│   │   ├── pack.lua       # Định nghĩa danh sách plugin và logic quản lý vim.pack
+│   │   ├── health.lua     # Các kiếm tra sức khỏe (health checks) tùy chỉnh
+│   │   └── plugins/       # Cấu hình chi tiết cho từng nhóm plugin
+│   │       ├── appearance.lua
+│   │       ├── lsp.lua
+│   │       ├── editor.lua
+│   │       └── search.lua
+│   └── custom/            # Thư mục dành riêng cho các tùy biến cá nhân
+```
+
+#### Các Đặc Điểm Cốt Lõi
+- **Quản lý Package Native**: Plugin được cài đặt vào `pack/bundle/start/`, điều khiển hoàn toàn bằng API `vim.pack`.
+- **Nhất quán Phiên bản**: File `nvim-pack-lock.json` đảm bảo môi trường làm việc giống hệt nhau trên mọi máy tính.
+- **Tính Modular**: Cấu hình được chia nhỏ theo chức năng (LSP, Giao diện, Tìm kiếm) để dễ dàng bảo trì.
+
 ### 🚀 Các Ngôn Ngữ Được Hỗ Trợ Toàn Diện
 
 Bộ cấu hình nhúng sẵn hệ sinh thái phân tích mã nguồn (LSP + Formatter) hoạt động tự động dưới nền:
@@ -108,8 +161,9 @@ _(Lưu ý: Phím **`<Leader>`** mặc định được cấu hình là phím **`
 - **`<Ctrl> + Click`**: Mở trực tiếp một đường link (URL) tại vùng soạn thảo ra trình duyệt web.
   - _Mẹo mở link thông báo ở đáy màn hình (Command-line)_: Hãy giữ phím **`<Shift>`** rồi click chuột. Hành động này nhường quyền bắt click lại cho ứng dụng Terminal bên ngoài mở link giúp bạn!
 - **`<Esc><Esc>`**: Thoát chế độ Terminal.
-- **`<Leader> + l`**: Mở trạng thái package native (`vim.pack`).
-- **`<Leader> + u`**: Cập nhật package native (`vim.pack.update()`).
+- **`ps`**: Kiểm tra trạng thái package native (**P**ack **S**tatus).
+- **`pu`**: Cập nhật các package native (**P**ack **U**pdate).
+- **`pc`**: Dọn dẹp các package không dùng đến (**P**ack **C**lean).
 - **`<Leader> + m`**: Mở giao diện cài đặt Linter/Formatter/LSP (Mason).
 - **Copy/Paste qua SSH/Docker**: Tự động đồng bộ văn bản vừa `y` (yank) ra Clipboard máy tính cá nhân (qua chuẩn OSC52), không còn lỗi thiếu quyền xclip hay màn hình `:0`.
 
