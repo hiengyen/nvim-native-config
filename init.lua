@@ -3,6 +3,10 @@ if vim.loader then
   vim.loader.enable()
 end
 
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.g.have_nerd_font = true
+
 -- Plugins
 require('hiengyen.pack').setup()
 require('hiengyen.plugins.appearance').setup()
@@ -12,19 +16,7 @@ require('hiengyen.plugins.lsp').setup()
 require('hiengyen.plugins.debug').setup()
 require('hiengyen.plugins.treesitter').setup()
 
--- Highlight on yank
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('hiengyen-highlight-yank', { clear = true }),
-  callback = function()
-    vim.hl.on_yank()
-  end,
-})
-
 --
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-vim.g.have_nerd_font = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.o.number = true
 vim.o.mouse = 'a'
@@ -78,3 +70,12 @@ keymap('n', '<leader>tm', ':tabmove<CR>', { desc = 'Move current tab' })
 keymap('n', '<leader>tl', ':tabnext<CR>', { desc = 'Move to next tab' })
 keymap('n', '<leader>th', ':tabprevious<CR>', { desc = 'Move to previous tab' })
 keymap('n', '<leader>te', ':tabedit<CR>', { desc = 'Open file in new tab' })
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('hiengyen-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
