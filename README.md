@@ -53,6 +53,9 @@ _(Note: The **`<Leader>`** key is customized to the **`Space`** bar)_
 
 #### 1. Fundamental Keybinds & Navigation
 
+- **`gf`**: Go to the file whose path is under the cursor.
+- **`<Ctrl> + o`** / **`<Ctrl> + i`**: Jump back / forward in the jump list (useful after `gf` or jumping to definition).
+- **`<Ctrl> + ^`** (or **`<Ctrl> + 6`**): Toggle quickly between the current file and the most recently edited alternate file.
 - **`<Ctrl> + s`**: Instant file saving (works in Normal, Insert, and Visual modes).
 - **`<Ctrl> + h/j/k/l`**: Navigate efficiently between split windows.
 - **`<Ctrl> + Click`**: Open a URL/link under the cursor directly in the web browser.
@@ -156,6 +159,9 @@ _(Lưu ý: Phím **`<Leader>`** mặc định được cấu hình là phím **`
 
 #### 1. Phím tắt Nền tảng & Di chuyển
 
+- **`gf`**: Mở file (Go to file) có đường dẫn nằm dưới con trỏ chuột.
+- **`<Ctrl> + o`** / **`<Ctrl> + i`**: Quay lại / Tiến tới vị trí trước đó trong lịch sử di chuyển (Rất hữu ích sau khi dùng `gf` hoặc nhảy đến định nghĩa).
+- **`<Ctrl> + ^`** (hoặc **`<Ctrl> + 6`**): Chuyển đổi qua lại (Toggle) cực nhanh giữa 2 file vừa mở gần nhất.
 - **`<Ctrl> + s`**: Lưu file siêu nhanh (Hoạt động ở mọi chế độ).
 - **`<Ctrl> + h/j/k/l`**: Nhảy qua lại giữa các cửa sổ chia đôi (Split Window).
 - **`<Ctrl> + Click`**: Mở trực tiếp một đường link (URL) tại vùng soạn thảo ra trình duyệt web.
