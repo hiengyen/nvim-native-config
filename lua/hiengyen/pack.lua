@@ -122,13 +122,13 @@ M.specs = {
   spec 'nvim-neo-tree/neo-tree.nvim',
   spec 'MunifTanjim/nui.nvim',
   spec 'Exafunction/codeium.vim',
-  spec 'ojroques/vim-oscyank',
-  spec 'mfussenegger/nvim-dap',
-  spec 'rcarriga/nvim-dap-ui',
-  spec 'jay-babu/mason-nvim-dap.nvim',
-  spec 'leoluz/nvim-dap-go',
-  spec 'nvim-neotest/nvim-nio',
   spec 'nvim-treesitter/nvim-treesitter',
+  spec 'ojroques/vim-oscyank',
+  -- spec 'mfussenegger/nvim-dap',
+  -- spec 'rcarriga/nvim-dap-ui',
+  -- spec 'jay-babu/mason-nvim-dap.nvim',
+  -- spec 'leoluz/nvim-dap-go',
+  -- spec 'nvim-neotest/nvim-nio',
 }
 
 function M.setup()

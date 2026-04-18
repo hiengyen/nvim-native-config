@@ -13,7 +13,7 @@ require('hiengyen.plugins.appearance').setup()
 require('hiengyen.plugins.editor').setup()
 require('hiengyen.plugins.search').setup()
 require('hiengyen.plugins.lsp').setup()
-require('hiengyen.plugins.debug').setup()
+-- require('hiengyen.plugins.debug').setup()
 require('hiengyen.plugins.treesitter').setup()
 
 --
